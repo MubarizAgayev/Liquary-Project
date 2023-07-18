@@ -1,0 +1,73 @@
+﻿@model AboutVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="~/assets/css/about.css">
+
+<main>
+    <div class="head">
+        <a asp-controller="Home" asp-action="Index">
+            <div class="navigate">
+                <i class="fa-solid fa-house-chimney"></i>
+                Home
+            </div>
+        </a>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+        <span>About</span>
+    </div>
+    <div class="container">
+        <div class="story">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="left">
+                    <img src="~/assets/images/about-page-image/rev_home4_850x.webp" alt="">
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12 col-sm-12 col-12">
+                <div class="right">
+                    <h3>Our story</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, accusamus. Veritatis dolorem autem nisi id non distinctio magnam excepturi inventore dolorum eveniet explicabo eius, similique aliquam deserunt molestiae ut perferendis recusandae dolor quod repudiandae ex. Quas nostrum error doloremque impedit ratione amet nulla harum rerum tempore. Aliquid dicta nam voluptatibus?</p>
+                    <div class="line"></div>
+                    <h4>Sean Mtorssion</h4>
+                    <span>-Photographer</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="reason">
+            <h3>Meet our people</h3>
+            <div class="peoples">
+
+                @foreach(var person in Model.People)
+                {
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <div class="person">
+                            <div class="img">
+                                <img src="~/assets/images/peoples/@person.Image" alt="">
+                            </div>
+                            <div class="about">
+                                <h6>@person.Name</h6>
+                                <span>@person.Position</span>
+                                <div class="websites">
+                                    <a href="@person.Facebook">
+                                        <i class="fa-brands fa-facebook-f"></i>
+                                    </a>
+                                    <a href="@person.Twitter">
+                                        <i class="fa-brands fa-twitter"></i>
+                                    </a>
+                                    <a href="@person.TikTok">
+                                        <i class="fa-brands fa-tiktok"></i>
+                                    </a>
+                                </div>
+                                <p>@person.Describtion</p>
+                            </div>
+                        </div>
+                    </div>
+                }        
+
+               
+            </div>
+        </div>
+    </div>
+</main>
+

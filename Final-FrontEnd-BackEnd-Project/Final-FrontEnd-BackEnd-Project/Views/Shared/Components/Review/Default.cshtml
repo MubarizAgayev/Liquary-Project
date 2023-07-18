@@ -1,0 +1,26 @@
+﻿@model ReviewVM
+
+<form asp-controller="Account" asp-action="Register" method="post">
+                        <div class="write-review d-none">
+                            <h4>Write a review</h4>
+                            <Label for="Name">Name</Label><br>
+                            <input placeholder="Enter your name" asp-for="UserName" id="Name" type="text"><br>
+                            <label for="Email">Email</label><br>
+                            <input placeholder="joht.smith@example.com" asp-for="Email" id="Email" type="text"><br>
+                            <label>Raiting</label><br>
+                            <div id="0" class="stars">
+            <input placeholder="joht.smith@example.com" asp-for="Raiting" style="display:none;" id="Email" type="number"><br>
+                                <i id="1" class="fa-regular fa-star"></i>
+                                <i id="2" class="fa-regular fa-star"></i>
+                                <i id="3" class="fa-regular fa-star"></i>
+                                <i id="4" class="fa-regular fa-star"></i>
+                                <i id="5" class="fa-regular fa-star"></i>
+                            </div><br>
+                            <label for="tittle">Review Tittle</label><br>
+                            <input placeholder="Give you review a tittle" asp-for="Tittle" id="tittle" type="text"><br>
+                            <label for="">Body of Review(1500)</label><br>
+                            <textarea placeholder="Write you comments here" asp-for="Describtion" class="text-area" name="" id="" cols="30" rows="10"></textarea><br>
+                            <button type="submit" metod="post" asp-controller="ProductDetail" asp-action="">Submit Review</button>
+                            <div class="line"></div><br>
+                        </div>
+  </form>

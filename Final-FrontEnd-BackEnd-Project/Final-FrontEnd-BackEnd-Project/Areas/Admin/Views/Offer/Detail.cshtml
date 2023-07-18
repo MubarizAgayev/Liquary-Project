@@ -1,0 +1,30 @@
+﻿@model Offer
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container">
+
+    <div class="form-group">
+        <label>Description</label>
+        <div style="background-color:gray;">
+            @Html.Raw(Model.Describtion)
+        </div>
+        <span class="text-danger" asp-validation-for="Describtion"></span><br />
+    </div>
+
+    <div class="form-group">
+        <label>Images</label>
+        <div class="form-group">
+            <img style="width:200px;height:150px" src="~/assets/images/offers/@Model.Image" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="buttons my-3">
+            <a class="btn btn-light" asp-action="Index">Cancel</a>
+        </div>
+    </div>
+</div>
+
+

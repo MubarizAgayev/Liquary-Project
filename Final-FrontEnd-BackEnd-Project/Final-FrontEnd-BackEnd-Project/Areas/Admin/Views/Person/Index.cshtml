@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Person>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <a class="btn btn-success text-white" asp-action="Create" style="float:right">Create</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Position</th>
+                <th scope="col">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model)
+            {
+                <tr>
+                    <th>
+                        <img style="width:130px;height:100px;" src="~/assets/images/peoples/@person.Image" />
+                    </th>
+                    <th>
+                        @person.Name
+                    </th>
+                    <th>
+                        @person.Position
+                    </th>
+                    <td>
+                        <a class="btn btn-outline-info" asp-action="Detail" asp-route-id="@person.Id">Info</a>
+                        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@person.Id">Edit</a>
+                        <a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@person.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

@@ -1,0 +1,47 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container" style="margin-left:300px;margin-top:100px">
+
+    <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" disabled id="customFile" asp-for="Tittle" />
+        <span class="text-danger" asp-validation-for="Tittle"></span><br />
+    </div>
+    <div class="form-group">
+        <label>Owner</label>
+        <input class="form-control" disabled id="customFile" asp-for="Owner" />
+        <span class="text-danger" asp-validation-for="Owner"></span><br />
+    </div>
+
+    <div class="form-group">
+        <label>Tag</label>
+        @foreach (var tag in Model.BlogTags)
+        {
+            <input class="form-control" disabled id="customFile" value="@tag.Tag.TagName" />
+        }
+    </div>
+
+    <div class="form-group">
+        <label>Image</label>
+        <div class="form-group">
+            <img style="width:150px;height:150px" src="~/assets/images/blogs/@Model.Image" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" disabled id="description-text" rows="5" asp-for="Describtion"></textarea>
+        <span class="text-danger" asp-validation-for="Describtion"></span><br />
+    </div>
+
+
+    <div class="form-group">
+        <div class="buttons my-3">
+            <a class="btn btn-light" asp-action="Index">Cancel</a>
+        </div>
+    </div>
+</div>
+

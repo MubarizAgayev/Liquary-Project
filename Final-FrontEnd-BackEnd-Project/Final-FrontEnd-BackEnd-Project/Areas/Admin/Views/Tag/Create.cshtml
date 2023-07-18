@@ -1,0 +1,20 @@
+﻿@model TagCreateVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" id="customFile" asp-for="TagName" />
+            <span class="text-danger" asp-validation-for="TagName"></span><br />
+        </div>
+
+        <div class="buttons my-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-light" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+

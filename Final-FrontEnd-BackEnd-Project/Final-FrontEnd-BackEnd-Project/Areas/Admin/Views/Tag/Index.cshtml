@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Tag>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <a class="btn btn-success text-white" asp-action="Create" style="float:right">Create</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">TagName</th>
+                <th scope="col">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tag in Model)
+            {
+                <tr>
+                    <th>
+                        @tag.TagName
+                    </th>
+                    <td>
+                        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@tag.Id">Edit</a>
+                        <a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@tag.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

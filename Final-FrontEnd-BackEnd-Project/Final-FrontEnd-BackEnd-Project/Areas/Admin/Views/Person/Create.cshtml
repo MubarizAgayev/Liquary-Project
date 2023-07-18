@@ -1,0 +1,49 @@
+﻿@model PersonCreateVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" id="customFile" asp-for="Name" />
+            <span class="text-danger" asp-validation-for="Name"></span><br />
+        </div>
+        <div class="form-group">
+            <label>Position</label>
+            <input class="form-control" id="customFile" asp-for="Position" />
+            <span class="text-danger" asp-validation-for="Position"></span><br />
+        </div>
+        <div class="form-group">
+            <label>Facebook</label>
+            <input class="form-control" id="customFile" asp-for="Facebook" />
+            <span class="text-danger" asp-validation-for="Facebook"></span><br />
+        </div>
+        <div class="form-group">
+            <label>Twitter</label>
+            <input class="form-control" id="customFile" asp-for="Twitter" />
+            <span class="text-danger" asp-validation-for="Twitter"></span><br />
+        </div>
+        <div class="form-group">
+            <label>TikTok</label>
+            <input class="form-control" id="customFile" asp-for="TikTok" />
+            <span class="text-danger" asp-validation-for="TikTok"></span><br />
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" id="description-text" rows="5" asp-for="Describtion"></textarea>
+            <span class="text-danger" asp-validation-for="Describtion"></span><br />
+        </div>
+        <div class="form-group">
+            <label>Image</label>
+            <input class="form-control" id="customFile" asp-for="Photo" />
+            <span class="text-danger" asp-validation-for="Photo"></span>
+        </div>
+        <div class="buttons my-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-light" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+

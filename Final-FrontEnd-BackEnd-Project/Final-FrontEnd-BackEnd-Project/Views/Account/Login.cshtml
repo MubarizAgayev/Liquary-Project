@@ -1,0 +1,23 @@
+﻿@model LoginVM
+@{
+    ViewData["Title"] = "Login";
+}
+
+<link rel="stylesheet" href="~/assets/css/register.css">
+<main>
+    <div class="container">
+        <div class="common">
+            <h1>Create account</h1>
+            <div class="register">  
+                <form asp-controller="Account" asp-action="Login" method="post">
+                    <input placeholder="EmailOrUsername" asp-for="EmailOrUsername"><br>
+                    <span class="text-danger" asp-validation-for="EmailOrUsername"></span>
+                    <input placeholder="Password" asp-for="Password"><br>
+                    <span class="text-danger" asp-validation-for="Password"></span>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+

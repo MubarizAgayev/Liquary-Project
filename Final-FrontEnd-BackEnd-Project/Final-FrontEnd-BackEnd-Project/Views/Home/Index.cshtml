@@ -1,0 +1,222 @@
+﻿@model HomeVM
+@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="~/assets/css/index.css">
+
+
+<main>
+    <!-- slider -->
+    <section id="slider">
+        <div class="multiple-items slider">
+            @foreach (var item in Model.Slider)
+            {
+            <div class="col-12">
+                <div class="team">
+                    <span>@item.Tittle</span>
+                    <h1>@item.Offer</h1>
+                    <p>@item.Describtion</p>
+                    <a href="">SHOW MORE</a>
+                    <img src="~/assets/images/slider-img/@item.Image" alt="">
+                </div>
+            </div>
+            }
+            
+        </div>
+    </section>
+    <!-- slider -->
+    <!--Category-->
+    <section id="categories">
+        <h1>Product category</h1>
+        <p class="tittle">Explore Our Amazing Selection</p>
+        <div class="common">
+
+            @foreach(var item in Model.Categories)
+            {
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                    <div class="item"
+                     style="background-image:url('@Url.Content("~/assets/images/category-image/category-background/")@item.BackgroundColor') ;">
+                        <img src="~/assets/images/category-image/@item.CategoryImage" alt="">
+                        <div class="text">
+                            <a href="">
+                                <span>@item.CategoryName</span>
+                                <div class="line"></div>
+                            </a>
+                            <p>@Model.Products.FindAll(m=>m.CategoryId == item.Id).Count products</p>
+                        </div>
+                    </div>
+                </div>
+            }        
+
+            
+        </div>
+    </section>
+    <!--Category-->
+    <!--Advertsing-->
+    <section id="top-seller" style="background-image:url(./assets/images/top-seller-images/bg_3.webp);">
+        <h1>Top sellers products</h1>
+        <p class="desc">The best selection of whisky and liqueur</p>
+        <div class="products">
+
+            @foreach(var item in Model.Products.OrderByDescending(m=>m.Raiting).Take(4))
+            {
+                <div class="col-6">
+                    <div class="item">
+                        <div class="img">
+                            <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.Id">
+                                <img src="~/assets/images/products/@item.Images.FirstOrDefault(m=>m.IsMain).Image" alt="">
+                                <img src="~/assets/images/products/@item.Images.FirstOrDefault(m=>!m.IsMain).Image" alt="">
+                            </a>
+                        </div>
+                        <div class="text">
+                            <h6>@item.Name</h6>
+                            <div class="rank">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= item.Raiting)
+                                    {
+                                        <i class="fa-solid fa-star active"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa-solid fa-star"></i>
+                                    }
+                                }
+                            </div>
+                            <span>$@item.Price</span>
+                            @if(@item.InStock){
+                            <div class="stock">
+                                <div class="status"></div>
+                                <p>In Stock</p>
+                            </div>
+                            }
+                            else{
+                            <div class="stock">
+                                <div class="status" style="background-color:red"></div>
+                                <p style="color:red">In Stock</p>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }        
+
+           
+
+
+        </div>
+    </section>
+    <!--Advertsing-->
+    <!--Latest Products-->
+    <section id="latest-products">
+        <div class="container">
+            <h1>Latest Products</h1>
+            <p>The best selection of whisky, vodka and liqueur</p>
+            <div class="corusel responsive">
+
+
+                @foreach (var item in Model.Products.OrderByDescending(m=>m.CreateDate).Take(6))
+                {
+                    <div class="col-2">
+                        <div class="team">
+                            <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.Id">
+                                <div class="img">
+                                    <img src="~/assets/images/products/@item.Images.FirstOrDefault(m=>m.IsMain).Image" alt="">
+                                    <img src="~/assets/images/products/@item.Images.FirstOrDefault(m=>!m.IsMain).Image" alt="">
+                                </div>
+                            </a>
+                            <i class="fa-regular fa-heart heart"></i>
+                            <a href="">
+                                <h6>@item.Name</h6>
+                            </a>
+                            <div class="stars">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= item.Raiting)
+                                    {
+                                        <i class="fa-solid fa-star active"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa-solid fa-star"></i>
+                                    }
+                                }
+                            </div>
+                            <span class="price">$@item.Price</span>
+                            @if(item.InStock){
+                                <div class="stock">
+                                    <div class="status"></div>
+                                    <span>In Stock</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="stock">
+                                    <div class="status" style="background-color:red"></div>
+                                    <span style="color:red">In Stock</span>
+                                </div>
+                            }
+                            <button class="add-to-cart-button" data-id="@item.Id">ADD TO CART</button>
+                        </div>
+                    </div>
+                }
+
+
+                
+            </div>
+        </div>
+    </section>
+    <!--Latest Products-->
+    <!--Offers-->
+    <section id="offers">
+        <div class="container">
+            <div class="teams">
+                @foreach (var item in Model.Offers)
+                {
+                    <div class="col-xxl-3 col-xl-6 col-sm-12 col-12">
+                        <div class="item">
+                            <div class="text">
+                                @Html.Raw(item.Describtion);
+                            </div>
+                            <img src="~/assets/images/offers/@item.Image" alt="">
+                        </div>
+                    </div>
+                }
+                
+            </div>
+        </div>
+    </section>
+    <!--Offers-->
+    <!--Blogs-->
+    <section id="blogs">
+        <div class="container">
+            <h1>Latest from blog</h1>
+            <p class="desc">A selection of the best-selling beer and wines</p>
+            <div class="blog-team">
+
+                @foreach (var item in Model.Blogs)
+                {
+                    <div class="col-xxl-4 col-xl-12">
+                        <div class="item">
+                            <a href=""><img src="~/assets/images/blogs/@item.Image" alt=""></a>
+                            @foreach (var tag in item.BlogTags)
+                            {
+                                <span class="tag">@tag.Tag.TagName,</span>
+                            }
+                            <a href="">
+                                <h4>Hundreds Of Professionals Across The World</h4>
+                            </a>
+                            <span class="date">@item.CreateDate.ToString("dd MMMM yyyy")</span>
+                            <span style="color: gray;font-weight: 600;">/</span>
+                            <span style="color: gray;font-weight: 600;">By</span>
+                            <span class="owner">@item.Owner</span>
+                        </div>
+                    </div>
+                }
+                
+
+            </div>
+        </div>
+    </section>
+    <!--Blogs-->
+</main>

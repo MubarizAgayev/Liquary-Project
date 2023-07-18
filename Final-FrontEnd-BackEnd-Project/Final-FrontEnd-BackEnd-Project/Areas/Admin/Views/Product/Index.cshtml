@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+
+    <a class="btn btn-success text-white" asp-action="Create" style="float:right">Create</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Category</th>
+                <th scope="col">Raiting</th>
+                <th scope="col">Count</th>
+                <th scope="col">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <th>
+                        <img style="width:100px;height:100px;" src="~/assets/images/products/@product.Images.FirstOrDefault(m=>m.IsMain).Image" />
+                    </th>
+                    <th>
+                        @product.Name
+                    </th>
+                    <th>
+                        @product.Price
+                    </th>
+                    <th>
+                        @product.Category.CategoryName
+                    </th>
+                    <th>
+                        @product.Raiting
+                    </th>
+                    <th>
+                        @product.Count
+                    </th>
+                    <td>
+                        <a class="btn btn-outline-info" asp-action="Detail" asp-route-id="@product.Id">Info</a>
+                        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@product.Id">Edit</a>
+                        <a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

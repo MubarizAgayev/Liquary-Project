@@ -1,0 +1,80 @@
+﻿@model List<BasketDetailVM>
+@{
+    ViewData["Title"] = "Index";
+    decimal grandTotal = 0;
+}
+
+<link rel="stylesheet" href="~/assets/css/cart.css">
+
+<main>
+    <div class="head">
+        <a asp-controller="Home" asp-action="Index">
+            <div class="navigate">
+                <i class="fa-solid fa-house-chimney"></i>
+                Home
+            </div>
+        </a>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+        <span>Cart</span>
+    </div>
+
+    <div class="container">
+
+
+        @if(Model != null)
+        {
+            <h1 class="">Your Cart</h1>
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th scope="col">PRODUCT</th>
+                        <th scope="col">PRICE</th>
+                        <th scope="col">QUANTITY</th>
+                        <th scope="col">TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img src="~/assets/images/products/@product.Image" alt="">
+                                <span>@product.Name</span>
+                            </td>
+                            <td>$<span>@product.Price</span></td>
+                            <td>
+                                <div class="item">
+                                    <div class="count">
+                                        <div style="cursor:pointer;" class="minus" data-id="@product.Id">-</div>
+                                        <div class="num">@product.Count</div>
+                                        <div style="cursor:pointer;" class="plus" data-id="@product.Id">+</div>
+                                    </div>
+                                    <i class="fa-solid fa-trash-can delete-button" data-id="@product.Id"></i>
+                                </div>
+                            </td>
+                            <td>$<span>@product.Total</span></td>
+                        </tr>
+
+                        grandTotal += product.Total;
+                    }
+
+
+
+                </tbody>
+            </table>
+            <h1 class="grand-total">Grand Total: $<span>@grandTotal</span></h1>
+        }
+
+        else
+        {
+            <div class="empty">
+                <h1>Your cart is empty</h1><br>
+                <a asp-controller="Shop" asp-action="Index">Continue shopping</a>
+            </div>
+        }
+
+        
+
+    </div>
+</main>
+

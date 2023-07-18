@@ -1,0 +1,30 @@
+﻿@model RegisterVM
+@{
+    ViewData["Title"] = "Register";
+}
+<link rel="stylesheet" href="~/assets/css/register.css">
+<main>
+    <div class="container">
+        <div class="common">
+            <h1>Create account</h1>
+            <div class="register">
+                <form asp-controller="Account" asp-action="Register" method="post">
+                    <input placeholder="First name" asp-for="FirstName"><br>
+                    <span class="text-danger" asp-validation-for="FirstName"></span>
+                    <input placeholder="Last name" asp-for="LastName"><br>
+                    <span class="text-danger" asp-validation-for="LastName"></span>
+                    <input placeholder="UserName" asp-for="Username"><br>
+                    <span class="text-danger" asp-validation-for="Username"></span>
+                    <input placeholder="Email" asp-for="Email"><br>
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                    <input placeholder="Password" asp-for="Password"><br>
+                    <span class="text-danger" asp-validation-for="Password"></span>
+                    <input placeholder="Confirm password" asp-for="ConfirmPassword"><br>
+                    <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                    <button type="submit">Create</button>
+                 </form>
+            </div>
+        </div>
+    </div>
+</main>
+

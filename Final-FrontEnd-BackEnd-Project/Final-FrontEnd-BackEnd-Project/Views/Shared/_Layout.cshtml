@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/assets/css/boostrap.css">
+    <link rel="stylesheet" href="~/assets/css/slick.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="up">
+                <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="logo">
+                        <img src="~/assets/images/logo/Capture.PNG" alt="">
+                    </div>
+                    <i class="fa-solid fa-bars hamburger"></i>
+                    <div class="side-bar">
+                        <i class="fa-solid fa-xmark side-bar-close"></i>
+                        <ul>
+                            <a  asp-controller="Home" asp-action="Index">
+                            <li>HOME</li>
+                            </a>
+                            <a asp-controller="Shop" asp-action="Index">
+                            <li>SHOP</li>
+                            </a>
+                            <a asp-controller="About" asp-action="Index">
+                            <li>ABOUT US</li>
+                            </a>
+                            <a href="">
+                            <li>CONTACT</li>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-7 col-md-6 col-sm-12 col-12">
+                    <form asp-controller="Shop" asp-action="Index" method="post">
+                        <div class="search">
+                            <input class="search-input" type="text" name="searchText" placeholder="Search over 10,000 products...">
+
+                            <button type="submit" style="padding-left:0px;padding-top:0px;padding-bottom:0px;width:83px;"><i data-item="" class="fa-solid fa-magnifying-glass icon search-icon"></i></button>
+
+                        </div>
+                    </form>
+                        
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-5 col-sm-7 col-12">
+                    <div class="processes">
+                        <div class="authorize">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                //<a asp-controller="Account" asp-action="Logout" method="post"><b>Sign up</b></a>
+                                <form asp-controller="Account" asp-action="Logout" method="post">
+                                    <button type="submit" class="nav-link">Logout</button>
+                                </form>
+                                <span>,@User.Identity.Name</span>
+                            }
+                            else
+                            {
+                                <a asp-controller="Account" asp-action="Login"><b>Sign in</b></a>
+                                <span>Or</span>
+                                <a asp-controller="Account" asp-action="Register"><b>Register</b></a>
+                            }
+                        </div>
+                        <div class="icons">
+                            <a asp-controller="Wishlist" asp-action="Index">
+                                <div class="wishlist">
+                                    <i class="fa-regular fa-heart heart"></i>
+                                    <sub>0</sub>
+                                </div>
+                            </a>
+                            <a asp-controller="Cart" asp-action="Index">
+                                <div class="cart">
+                                    <i class="fa-solid fa-basket-shopping basket"></i>
+                                    <sub class="cart-count">
+                                            @ViewBag.BasketCount
+                                    </sub>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="line">
+            <div class="underline"></div>
+        </div>
+        <div class="container">
+            <div class="down">
+                <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-5 col-sm-7 col-7">
+                    <div class="tab-menu">
+                        <i class="fa-solid fa-bars hamburger"></i>
+                        <p>SHOP BY DEPARTMENT</p>
+                        <i class="fa-solid fa-angle-down arrow"></i>
+                    </div>
+                    <div class="menu d-none">
+                        <img src="./assets/images/tab-image/bg_vertical-1.webp" alt="">
+                        <div class="category-list">
+                            <a href="">
+                                <div class="item">Whiskey</div>
+                            </a>
+                            <a href="">
+                                <div class="item">Spirits</div>
+                            </a>
+                            <a href="">
+                                <div class="item">Deals</div>
+                            </a>
+                            <a href="">
+                                <div class="item">Cognac</div>
+                            </a>
+                            <a href="">
+                                <div class="item">Cocktail</div>
+                            </a>
+                            <a href="">
+                                <div class="item">Beer</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-6 col-xl-5 col-lg-6 col-md-6 col-sm-7">
+                    <div class="navigations">
+                        <div class="item">
+                            <a asp-controller="Home" asp-action="Index">
+                                <span>HOME</span>
+                            </a>
+                            <div class="line"></div>
+                        </div>
+                        <div class="item">
+                            <a asp-controller="Shop" asp-action="Index">
+                                <span>SHOP</span>
+                            </a>
+                            <div class="line"></div>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <span>PAGE</span>
+                            </a>
+                            <div class="line"></div>
+                        </div>
+                        <div class="item">
+                            <a asp-controller="About" asp-action="Index">
+                                <span>ABOUT US</span>
+                            </a>
+                            <div class="line"></div>
+                        </div>
+                        <div class="item">
+                            <a href="">
+                                <span>CONTACT</span>
+                            </a>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-3 col-xl-3">
+                    <div class="contact-number">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Hotline:</span>
+                        <h4>1-800-888-9999</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+            @RenderBody()
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="up">
+                    <div class="col-lg-4 col-md-5">
+                        <div class="item1">
+                            <div class="logo">
+                                <img src="./assets/images/logo/logo-2.PNG" alt="">
+                            </div>
+                            <p>
+                                4517 Washington Ave. Manchester,
+                                Kentucky 39495, USA
+                            </p>
+                            <h5>+(406)555-0120</h5>
+                            <p>booking@example.com</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <div class="item">
+                            <h6>CUSTOMER SERVICE</h6>
+                            <ul>
+                                <a href="">
+                                <li>Help Center</li>
+                                </a>
+                                <a href="">
+                                <li>My Account</li>
+                                </a>
+                                <a href="">
+                                <li>Track My Order</li>
+                                </a>
+                                <a href="">
+                                <li>Return Policy</li>
+                                </a>
+                                <a href="">
+                                <li>Gift Cards</li>
+                                </a>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <div class="item">
+                            <h6>ABOUT US</h6>
+                            <ul>
+                                <a href="">
+                                <li>Company Info</li>
+                                </a>
+                                <a href="">
+                                <li>Press Releases</li>
+                                </a>
+                                <a href="">
+                                <li>Careers</li>
+                                </a>
+                                <a href="">
+                                <li>Reviews</li>
+                                </a>
+                                <a href="">
+                                <li>Investor Relations</li>
+                                </a>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <div class="item">
+                            <h6>QUICK LINKS</h6>
+                            <ul>
+                                <a href="">
+                                <li>Search</li>
+                                </a>
+                                <a href="">
+                                <li>Become a Reseller</li>
+                                </a>
+                                <a href="">
+                                <li>About Us</li>
+                                </a>
+                                <a href="">
+                                <li>Contact Us</li>
+                                </a>
+                                <a href="">
+                                <li>Terms of Service</li>
+                                </a>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <div class="item">
+                            <h6>CATEGORIES</h6>
+                            <ul>
+                                <a href="">
+                                <li>Brandy</li>
+                                </a>
+                                <a href="">
+                                <li>White Wine</li>
+                                </a>
+                                <a href="">
+                                <li>Champagne</li>
+                                </a>
+                                <a href="">
+                                <li>Vodka</li>
+                                </a>
+                                <a href="">
+                                <li>Tequila</li>
+                                </a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="down">
+                    <div class="col-lg-4 col-mf-6">
+                        <div class="item">
+                            <span>Tittle social</span>
+                            <div class="profiles">
+                                <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                                <a href=""><i class="fa-brands fa-pinterest"></i></a>
+                                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="item">
+                            <span>WE ACCEPT</span>
+                            <div class="carts">
+                                <i class="fa-brands fa-cc-mastercard"></i>
+                                <i class="fa-brands fa-paypal"></i>
+                                <i class="fa-brands fa-cc-visa"></i>
+                                <i class="fa-brands fa-cc-amex"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="item inform">
+                            <p>Copyright 2023,Ap Liquory Powered By Shopity</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <button id="myBtn"><i class="fa-solid fa-chevron-up"></i></button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+            integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/assets/js/slick.min.js"></script>
+    <script src="~/assets/js/index.js"></script>
+    <script src="~/assets/js/shop.js"></script>
+    <script src="~/assets/js/about.js"></script>
+    <script src="~/assets/js/product-detail.js"></script>
+    <script src="~/assets/js/cart.js"></script>
+    <script src="~/assets/js/wishlist.js"></script>
+    <script src="~/js/JavaScript.js"></script>
+    <script src="https://kit.fontawesome.com/8f43d61c20.js" crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
