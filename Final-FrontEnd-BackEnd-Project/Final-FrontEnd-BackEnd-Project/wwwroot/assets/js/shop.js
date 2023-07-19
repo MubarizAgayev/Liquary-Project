@@ -19,9 +19,7 @@ $(document).ready(function () {
 
 
 
-    document.querySelector(".common .up .sort .choose .sort-up").addEventListener("click",function(){
-        document.querySelector(".common .up .sort .choose .sort-down").classList.toggle("d-none")
-    })
+   
 
 
     let listLi = document.querySelectorAll(".common .up .sort .choose .sort-down ul li")

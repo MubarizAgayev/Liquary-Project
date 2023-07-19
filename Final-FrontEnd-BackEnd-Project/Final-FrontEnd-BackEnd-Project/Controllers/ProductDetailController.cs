@@ -37,6 +37,8 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 AppUser result = await _context.Users.FirstOrDefaultAsync(m => m.UserName == User.Identity.Name);
                 List<Basket> baskets = await _context.Baskets.Where(m => m.UserId == result.Id && m.SoftDelete == false).ToListAsync();
                 basketCount = baskets.Sum(m => m.Count);
+                ViewBag.UserName = User.Identity.Name;
+                ViewBag.Email = result.Email;
             }
             if (basketCount > 0)
             {
@@ -55,8 +57,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 Reviews = review,
             };
 
-            ViewBag.UserName = User.Identity.Name;
-            ViewBag.Email = user1.Email;
+            
 
             TempData["Id"] = id;
 
@@ -159,7 +160,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 await _context.Reviews.AddAsync(newReview);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","ProductDetail",new {id});
             }
             else
             {

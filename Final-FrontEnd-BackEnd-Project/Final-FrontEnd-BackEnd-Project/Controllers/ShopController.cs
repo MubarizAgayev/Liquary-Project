@@ -3,7 +3,9 @@ using Final_FrontEnd_BackEnd_Project.Helpers;
 using Final_FrontEnd_BackEnd_Project.Models;
 using Final_FrontEnd_BackEnd_Project.Services.Interfaces;
 using Final_FrontEnd_BackEnd_Project.ViewModels;
+using MailKit.Search;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace Final_FrontEnd_BackEnd_Project.Controllers
@@ -23,9 +25,9 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
 
         [HttpGet]
         [HttpPost]
-        public async Task<IActionResult> Index(string searchText = null, string filter = null, int page = 1, int take = 6)
+        public async Task<IActionResult> Index(string searchText = null,string filter = null, int page = 1, int take = 6)
         {
-
+            
 
 
             List<Product> products = await _productService.GetPaginatedDatas(page, take, searchText, filter);
@@ -60,6 +62,18 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
             return View(model);
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> Sort(string filter)
+        {
+            List<Product> products = await _productService.GetPaginatedDatas(1, 6, null, filter);
+            List<ProductListVM> mappedDatas = GetMappedDatas(products);
+            int pageCount = await GetPageCountAsync(6);
+
+            Paginate<ProductListVM> paginatedDatas = new(mappedDatas, 1, pageCount);
+
+            return PartialView("_ProductSortPartial",paginatedDatas);
+        }
 
         private async Task<int> GetPageCountAsync(int take)
         {

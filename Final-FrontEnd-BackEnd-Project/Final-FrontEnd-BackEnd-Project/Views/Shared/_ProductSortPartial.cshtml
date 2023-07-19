@@ -1,0 +1,55 @@
+﻿@model Paginate<ProductListVM>
+
+<div class="down">
+
+    @foreach (var item in Model.Datas)
+    {
+        <div class="col-lg-3 col-md-4">
+            <div class="cart">
+                <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.Id">
+                    <div class="img">
+                        <img src="~/assets/images/products/@item.MainImage" alt="">
+                        <img src="~/assets/images/products/@item.SecondImage" alt="">
+                    </div>
+                </a>
+                <div class="information">
+                    <h6>@item.ProductName</h6>
+                    <div class="stars">
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            if (i <= item.Raiting)
+                            {
+                                <i class="fa-solid fa-star active"></i>
+                            }
+                            else
+                            {
+                                <i class="fa-solid fa-star"></i>
+                            }
+                        }
+                    </div>
+                    <h6 class="price">$110.00</h6>
+                    @if (item.InStock)
+                    {
+                        <div class="stock-active">
+                            <div class="dot"></div>
+                            In Stock
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="stock-deactive">
+                            <div class="dot"></div>
+                            In Stock
+                        </div>
+                    }
+                    <button class="add-to-cart-button1" data-id="@item.Id">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+
+
+</div>

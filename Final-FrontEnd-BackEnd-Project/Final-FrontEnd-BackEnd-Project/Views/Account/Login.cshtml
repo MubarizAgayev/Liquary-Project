@@ -16,6 +16,9 @@
                     <span class="text-danger" asp-validation-for="Password"></span>
                     <button type="submit">Login</button>
                 </form>
+                <div class="forget">
+                    <label for=""><input type="checkbox" style="width:15px;height:15px;">Remember Me <a asp-controller="Account" asp-action="ForgotPassword">Forgot Password?</a></label>
+                </div>
             </div>
         </div>
     </div>

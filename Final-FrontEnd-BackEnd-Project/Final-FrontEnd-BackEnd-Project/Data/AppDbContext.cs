@@ -21,5 +21,6 @@ namespace Final_FrontEnd_BackEnd_Project.Data
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Wishlist> Wishlist { get; set; }
+        public DbSet<Contact> Contact { get; set; }
     }
 }

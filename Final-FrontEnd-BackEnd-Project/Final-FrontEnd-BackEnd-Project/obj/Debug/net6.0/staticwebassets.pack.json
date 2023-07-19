@@ -18141,6 +18141,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\HP\\OneDrive\\Рабочий стол\\Projects\\Page\\Final-Project\\Final\\Final-FrontEnd-BackEnd-Project\\Final-FrontEnd-BackEnd-Project\\wwwroot\\templates\\reset.html",
+      "PackagePath": "staticwebassets\\templates\\reset.html"
+    },
+    {
       "Id": "C:\\Users\\HP\\OneDrive\\Рабочий стол\\Projects\\Page\\Final-Project\\Final\\Final-FrontEnd-BackEnd-Project\\Final-FrontEnd-BackEnd-Project\\wwwroot\\templates\\verify.html",
       "PackagePath": "staticwebassets\\templates\\verify.html"
     },

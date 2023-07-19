@@ -25,9 +25,13 @@ namespace Final_FrontEnd_BackEnd_Project.Services
         {
             if (searchText == null || searchText == "")
             {
-                if (filter == "Alphabetically,Z-A")
+                if (filter == "All")
                 {
                     return await _context.Product.Include(m => m.Images).OrderByDescending(m => m.Name).Skip((page * take) - take).Take(take).ToListAsync();
+                }
+                else if (filter == "Alphabetically,Z-A")
+                {
+                    return await _context.Product.Include(m => m.Images).OrderBy(m => m.Name).Skip((page * take) - take).Take(take).ToListAsync();
                 }
                 else if (filter == "Alphabetically,A-Z")
                 {
@@ -57,7 +61,11 @@ namespace Final_FrontEnd_BackEnd_Project.Services
             }
             else
             {
-                if (filter == "Alphabetically,Z-A")
+                if (filter == "All")
+                {
+                    return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).Skip((page * take) - take).Take(take).ToListAsync();
+                }
+                else if (filter == "Alphabetically,Z-A")
                 {
                     return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).Skip((page * take) - take).Take(take).ToListAsync();
                 }

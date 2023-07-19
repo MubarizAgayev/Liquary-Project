@@ -16,12 +16,6 @@
             data: data,
             success: function (res) {
                 $(".cart-count").text(res)
-
-                Swal.fire(
-                    'Good job!',
-                    'You clicked the button!',
-                    'success'
-                )
             }
         })
     })
@@ -166,49 +160,29 @@
         }
     })
 
-    //$(document).on("click", ".product-detail-star", function () {
-
-    //})
 
 
-    //$(document).on("click", ".search-icon", function () {
 
-    //    let searchText = $(".search-input").val();
+    $(document).on("change", "#product-filter", function (ev) {
 
-    //    $(this).parent().attr("asp-route-searchText", searchText)
-    //    $(this).attr("date-item", searchText)
-    //    console.log($(this).attr("date-item"))
+        ev.preventDefault();
 
-    //    //console.log($(this).parent().attr("asp-route-searchText"))
+        let filter = $(this).val();
+        let data = { filter: filter }
 
 
-    //    //let url = `/Shop/Index?searchText = ${searchText}`;
-
-    //    //window.location.assign(url);
-
+        $.ajax({
+            url: "/Shop/Sort",
+            type: "Get",
+            data: data,
+            success: function (res) {
+                $(".partial-sort-datas").html(res)
+            }
+        })
         
 
-    //})
+    })
 
-
-   
-
-    //document.querySelector(".search-input").addEventListener("keyup", function () {
-    //    console.log(this.value)
-    //})
-
-   
-    //$(".search-btn").submit(function (ev) {
-    //    //ev.preventDefault();
-
-    //    let searchText = $(this).prev().val();
-
-    //    console.log(searchText)
-
-    //    //let url = `Home/Search?searchText = ${searchText}`;
-
-    //    //window.location.assign(url);
-    //})
-    
+       
 
 })
