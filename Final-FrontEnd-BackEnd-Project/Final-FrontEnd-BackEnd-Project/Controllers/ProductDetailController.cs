@@ -29,7 +29,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
         public async Task<IActionResult> Index(int id)
         {
             Product product = await _productService.GetById(id);
-            List<Review> review = await _context.Reviews.Where(m=>m.ProductId == id).ToListAsync();
+            List<Review> review = await _context.Reviews.Where(m => m.ProductId == id).ToListAsync();
 
             int basketCount = 0;
             if (User.Identity.IsAuthenticated)
@@ -39,16 +39,35 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 basketCount = baskets.Sum(m => m.Count);
                 ViewBag.UserName = User.Identity.Name;
                 ViewBag.Email = result.Email;
-            }
-            if (basketCount > 0)
-            {
-                ViewBag.BasketCount = basketCount;
+
+                List<Wishlist> wishlists = await _context.Wishlist.Where(m => m.UserId == result.Id).ToListAsync();
+
+                int wishListCount = wishlists.Count;
+
+                if (wishListCount > 0)
+                {
+                    ViewBag.WishListCount = wishListCount;
+                }
+                else
+                {
+                    ViewBag.WishListCount = 0;
+                }
+
+                if (basketCount > 0)
+                {
+                    ViewBag.BasketCount = basketCount;
+                }
+                else
+                {
+                    ViewBag.BasketCount = 0;
+                }
             }
             else
             {
+                ViewBag.WishListCount = 0;
                 ViewBag.BasketCount = 0;
             }
-            AppUser user1 = await _context.Users.Where(m => m.UserName == User.Identity.Name).FirstOrDefaultAsync();
+     
 
 
             ProductDetailVM model = new()
@@ -57,14 +76,14 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 Reviews = review,
             };
 
-            
+
 
             TempData["Id"] = id;
 
             return View(model);
         }
 
-        public async Task<IActionResult> AddBasket(int? id,int count)
+        public async Task<IActionResult> AddBasket(int? id, int count)
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -76,7 +95,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
 
                 if (dbProduct == null) return NotFound();
 
-                
+
 
                 Basket existBasket = await _context.Baskets.Where(m => m.ProductId == id && m.UserId == result.Id).FirstOrDefaultAsync();
                 List<Basket> baskets = await _context.Baskets.Where(m => m.UserId == result.Id).ToListAsync();
@@ -86,7 +105,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 if (existBasket != null)
                 {
                     existBasket.Count += count;
-                    basketCount = baskets.Sum(m => m.Count) +count;
+                    basketCount = baskets.Sum(m => m.Count) + count;
                 }
                 else
                 {
@@ -102,7 +121,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 }
 
 
-                 
+
 
                 if (basketCount > 0)
                 {
@@ -131,8 +150,9 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                AppUser User = await _context.Users.Where(m => m.UserName == review.UserName && m.Email == review.Email).FirstOrDefaultAsync();
-                if (User == null) { return NotFound(); }
+
+                AppUser User1 = await _context.Users.Where(m => m.UserName == User.Identity.Name).FirstOrDefaultAsync();
+                if (User1 == null) { return NotFound(); }
 
 
 
@@ -149,25 +169,83 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 Review newReview = new()
                 {
                     ProductId = id,
-                    UserId = User.Id,
+                    UserId = User1.Id,
                     Raiting = review.Raiting,
                     Tittle = review.Tittle,
                     Describtion = review.Describtion,
-                    Username = User.UserName,
-                    Email = User.Email,
+                    Username = User1.UserName,
+                    Email = User1.Email,
                 };
 
                 await _context.Reviews.AddAsync(newReview);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Index","ProductDetail",new {id});
+                return RedirectToAction("Index", "ProductDetail", new { id });
             }
             else
             {
                 return RedirectToAction("Login", "Account");
             }
         }
+
+
+        public async Task<IActionResult> AddWish(int? id)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                AppUser result = await _context.Users.FirstOrDefaultAsync(m => m.UserName == User.Identity.Name);
+
+                if (id is null) return BadRequest();
+
+                Product dbProduct = await _productService.GetById((int)id);
+
+                if (dbProduct == null) return NotFound();
+
+                Wishlist existWishlist = await _context.Wishlist.Where(m => m.ProductId == id && m.UserId == result.Id).FirstOrDefaultAsync();
+                List<Wishlist> wishlists = await _context.Wishlist.Where(m => m.UserId == result.Id).ToListAsync();
+                int wishListCount = 0;
+
+                if (existWishlist != null)
+                {
+
+                    wishListCount = wishlists.Count - 1;
+                    _context.Wishlist.Remove(existWishlist);
+                }
+                else
+                {
+
+                    wishListCount = wishlists.Count + 1;
+                    Wishlist newWishlist = new()
+                    {
+                        ProductId = (int)id,
+                        UserId = result.Id,
+                    };
+                    await _context.Wishlist.AddAsync(newWishlist);
+                }
+
+
+              
+
+
+                if (wishListCount > 0)
+                {
+                    ViewBag.WishListCount = wishListCount;
+                }
+                else
+                {
+                    ViewBag.WishListCount = 0;
+                }
+
+                await _context.SaveChangesAsync();
+
+                return Ok(wishListCount);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+
     }
-
-
 }

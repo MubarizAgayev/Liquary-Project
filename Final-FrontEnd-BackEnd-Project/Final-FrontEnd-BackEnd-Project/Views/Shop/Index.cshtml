@@ -21,7 +21,7 @@
             <div class="up">
                 <div class="sort">
                     <span class="sort-by-word">Sort by:</span>
-                    <div class="choose">
+                    <div class="choose" style="display:flex;gap:10px;">
 
                         <select name="cars" id="product-filter">
                             <option value="All">All</option>
@@ -33,21 +33,15 @@
                             <option value="Date,Old to New">Date,Old to New</option>
                             <option value="Date,New to Old">Date,New to Old</option>
                         </select>
-                        @*<div class="sort-up">
-                            <span>Alphabetically,A-Z</span>
-                            <i class="fa-solid fa-angle-down arrow"></i>
-                        </div>
-                        <div class="sort-down d-none">
-                            <ul>
-                                <li><span>Featured</span></li>
-                                <li><span>Best Selling</span></li>
-                                <li><span>Alphabetically,A-Z</span></li>
-                                <li><span>Alphabetically,Z-A</span></li>
-                                <li><span>Price,Low to High</span></li>
-                                <li><span>Date,Old to New</span></li>
-                                <li><span>Date,New to Old</span></li>
-                            </ul>
-                        </div>*@
+
+                        <select name="category" id="category-filter">
+                            
+                            @foreach(var category in Model.Categories)
+                            {
+                                <option value="@category.CategoryName">@category.CategoryName</option>
+                            }        
+                        </select>
+                
                     </div>
                     <span class="product-count">@Model.Products.Datas.Count()</span>
                 </div>

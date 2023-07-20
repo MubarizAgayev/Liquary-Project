@@ -6,5 +6,6 @@ namespace Final_FrontEnd_BackEnd_Project.ViewModels
     public class ShopVM
     {
         public Paginate<ProductListVM> Products { get; set; }
+        public List<Category> Categories { get; set; }
     }
 }

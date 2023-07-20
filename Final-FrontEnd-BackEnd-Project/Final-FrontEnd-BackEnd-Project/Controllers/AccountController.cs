@@ -43,6 +43,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
         {
 
             ViewBag.basketCount = await GetBasketCount();
+            ViewBag.WishListCount = await GetWishlistCount();
 
             return View();
         }
@@ -94,12 +95,12 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
             }
 
             html = html.Replace("{{link}}", link);
-            html = html.Replace("{{headerText}}", "Hello P135");
+            html = html.Replace("{{headerText}}", "Welcome Wine Site");
 
             _emailService.Send(newUser.Email, subject, html);
 
             ViewBag.basketCount = GetBasketCount();
-
+            ViewBag.WishListCount = await GetWishlistCount();
 
             return RedirectToAction(nameof(VerifyEmail));
         }
@@ -120,8 +121,9 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public IActionResult VerifyEmail()
+        public async Task<IActionResult> VerifyEmail()
         {
+            ViewBag.WishListCount = await GetWishlistCount();
             return View();
         }
 
@@ -129,6 +131,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
         public async Task<IActionResult> Login()
         {
             ViewBag.basketCount = await GetBasketCount();
+            ViewBag.WishListCount = await GetWishlistCount();
 
             return View();
         }
@@ -180,8 +183,11 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
 
 
         [HttpGet]
-        public IActionResult ForgotPassword()
+        public async Task<IActionResult> ForgotPassword()
         {
+            ViewBag.basketCount = await GetBasketCount();
+            ViewBag.WishListCount = await GetWishlistCount();
+
             return View();
         }
 
@@ -280,8 +286,27 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
             }
         }
 
+        public async Task<int> GetWishlistCount()
+        {
+            int wishCount = 0;
+            if (User.Identity.IsAuthenticated)
+            {
+                AppUser result = await _context.Users.FirstOrDefaultAsync(m => m.UserName == User.Identity.Name);
+                List<Wishlist> wishlists = await _context.Wishlist.Where(m => m.UserId == result.Id && m.SoftDelete == false).ToListAsync();
+                wishCount = wishlists.Count;
+            }
+            if (wishCount > 0)
+            {
+                return wishCount;
+            }
+            else
+            {
+                return 0;
+            }
+        }
 
-        
+
+
         public async Task CreateRole()
         {
             foreach(var role in Enum.GetValues(typeof(Roles)))

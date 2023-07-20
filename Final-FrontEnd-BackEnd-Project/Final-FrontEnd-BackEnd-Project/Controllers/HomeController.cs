@@ -46,20 +46,36 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 
                 List<Basket> baskets = await _context.Baskets.Where(m => m.UserId == result.Id && m.SoftDelete == false).ToListAsync();
                 basketCount = baskets.Sum(m => m.Count);
-                ViewBag.BasketCount = basketCount;
+
+
+                List<Wishlist> wishlists = await _context.Wishlist.Where(m => m.UserId == result.Id).ToListAsync();
+
+                int wishListCount = wishlists.Count;
+
+                if (basketCount > 0)
+                {
+                    ViewBag.BasketCount = basketCount;
+                }
+                else
+                {
+                    ViewBag.BasketCount = 0;
+                }
+
+                if (wishListCount > 0)
+                {
+                    ViewBag.WishListCount = wishListCount;
+                }
+                else
+                {
+                    ViewBag.WishListCount = 0;
+                }
             }
             else
             {
                 ViewBag.BasketCount = 0;
+                ViewBag.WishListCount = 0;
             }
-            if (basketCount > 0)
-            {
-                ViewBag.BasketCount = basketCount;
-            }
-            else
-            {
-                ViewBag.BasketCount = 0;
-            }
+
 
             HomeVM model = new()
             {
@@ -108,7 +124,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
 
                 List<Basket> baskets = await _context.Baskets.Where(m => m.UserId == result.Id).ToListAsync();
 
-                int basketCount = baskets.Sum(m => m.Count);
+                int basketCount = baskets.Sum(m => m.Count)+1;
 
                 if (basketCount > 0)
                 {
@@ -130,6 +146,61 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
         }
 
 
+
+
+
+        public async Task<IActionResult> AddWishList(int? id)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                AppUser result = await _context.Users.FirstOrDefaultAsync(m => m.UserName == User.Identity.Name);
+
+                if (id is null) return BadRequest();
+
+                Product dbProduct = await _productService.GetById((int)id);
+
+                if (dbProduct == null) return NotFound();
+
+                Wishlist existWishlist = await _context.Wishlist.Where(m => m.ProductId == id && m.UserId == result.Id).FirstOrDefaultAsync();
+
+                if (existWishlist != null)
+                {
+                    _context.Wishlist.Remove(existWishlist);
+                }
+                else
+                {
+
+                    Wishlist newWishlist = new()
+                    {
+                        ProductId = (int)id,
+                        UserId = result.Id,
+                    };
+                    await _context.Wishlist.AddAsync(newWishlist);
+                }
+
+
+                List<Wishlist> wishlists = await _context.Wishlist.Where(m => m.UserId == result.Id).ToListAsync();
+
+                int wishListCount = wishlists.Count+1;
+
+                if (wishListCount > 0)
+                {
+                    ViewBag.WishListCount = wishListCount;
+                }
+                else
+                {
+                    ViewBag.WishListCount = 0;
+                }
+
+                await _context.SaveChangesAsync();
+
+                return Ok(wishListCount);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
 
     }
 }

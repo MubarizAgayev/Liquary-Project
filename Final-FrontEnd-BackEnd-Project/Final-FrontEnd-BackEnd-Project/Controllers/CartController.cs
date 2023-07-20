@@ -24,8 +24,9 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
         public async Task<IActionResult> Index()
         {
             int basketCount = 0;
+            int wishListCount = 0;
 
-            if(User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated)
             {
                 AppUser result = await _context.Users.FirstOrDefaultAsync(m => m.UserName == User.Identity.Name);
 
@@ -48,6 +49,18 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                         Count = product.Count,
                         Total = dbProduct.Price * product.Count,
                     });
+                }
+                List<Wishlist> wishlists = await _context.Wishlist.Where(m => m.UserId == result.Id).ToListAsync();
+
+                wishListCount = wishlists.Count;
+
+                if (wishListCount > 0)
+                {
+                    ViewBag.WishListCount = wishListCount;
+                }
+                else
+                {
+                    ViewBag.WishListCount = 0;
                 }
 
                 basketCount = baskets.Sum(m => m.Count);
@@ -80,23 +93,14 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
 
                Basket dbBasket = await _context.Baskets.Where(m=>m.ProductId == id && m.UserId == result.Id).FirstOrDefaultAsync();
 
-                dbBasket.Count += 1;
+                ++dbBasket.Count;
                 List<Basket> dbBaskets = await _context.Baskets.Where(m => m.UserId == result.Id).ToListAsync();
 
-                int basketCount = dbBaskets.Sum(m => m.Count) + 1;
-
-                if (basketCount > 0)
-                {
-                    ViewBag.BasketCount = basketCount;
-                }
-                else
-                {
-                    ViewBag.BasketCount = 0;
-                }
+                int basketCount = dbBaskets.Sum(m => m.Count);
 
                 await _context.SaveChangesAsync();
 
-                return Ok();
+                return Ok(basketCount);
 
         }
 
@@ -111,9 +115,10 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
             Basket dbBasket = await _context.Baskets.Where(m => m.ProductId == id && m.UserId == result.Id).FirstOrDefaultAsync();
 
             dbBasket.Count -= 1;
+
             List<Basket> dbBaskets = await _context.Baskets.Where(m => m.UserId == result.Id).ToListAsync();
 
-            int basketCount = dbBaskets.Sum(m => m.Count) - 1;
+            int basketCount = dbBaskets.Sum(m => m.Count);
 
             if (basketCount > 0)
             {
@@ -126,7 +131,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Ok();
+            return Ok(basketCount);
 
         }
 
@@ -160,7 +165,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
              
             await _context.SaveChangesAsync();
 
-            return Ok();
+            return Ok(basketCount);
         }
     }
 }

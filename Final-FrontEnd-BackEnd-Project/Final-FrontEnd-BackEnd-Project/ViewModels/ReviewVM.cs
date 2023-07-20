@@ -4,11 +4,8 @@ namespace Final_FrontEnd_BackEnd_Project.ViewModels
 {
     public class ReviewVM
     {
-        
-        [Required]
         public string UserName { get; set; }
 
-        [Required]
         [DataType(DataType.EmailAddress, ErrorMessage = "E-mail is not valid")]
         public string Email { get; set; }
 

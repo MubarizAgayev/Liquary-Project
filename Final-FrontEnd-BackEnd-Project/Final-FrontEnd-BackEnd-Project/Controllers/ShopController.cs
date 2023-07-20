@@ -25,12 +25,12 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
 
         [HttpGet]
         [HttpPost]
-        public async Task<IActionResult> Index(string searchText = null,string filter = null, int page = 1, int take = 6)
+        public async Task<IActionResult> Index(string searchText = null,string filter = null,string category = null,int page = 1, int take = 6)
         {
             
+            List<Category> categories = await _context.Category.ToListAsync();
 
-
-            List<Product> products = await _productService.GetPaginatedDatas(page, take, searchText, filter);
+            List<Product> products = await _productService.GetPaginatedDatas(page, take, searchText, filter,category);
             List<ProductListVM> mappedDatas = GetMappedDatas(products);
             int pageCount = await GetPageCountAsync(take);
 
@@ -42,19 +42,39 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 AppUser result = await _context.Users.FirstOrDefaultAsync(m => m.UserName == User.Identity.Name);
                 List<Basket> baskets = await _context.Baskets.Where(m => m.UserId == result.Id && m.SoftDelete == false).ToListAsync();
                 basketCount = baskets.Sum(m => m.Count);
-            }
-            if (basketCount > 0)
-            {
-                ViewBag.BasketCount = basketCount;
+                List<Wishlist> wishlists = await _context.Wishlist.Where(m => m.UserId == result.Id).ToListAsync();
+
+                int wishListCount = wishlists.Count;
+
+                if (basketCount > 0)
+                {
+                    ViewBag.BasketCount = basketCount;
+                }
+                else
+                {
+                    ViewBag.BasketCount = 0;
+                }
+
+                if (wishListCount > 0)
+                {
+                    ViewBag.WishListCount = wishListCount;
+                }
+                else
+                {
+                    ViewBag.WishListCount = 0;
+                }
+
             }
             else
             {
                 ViewBag.BasketCount = 0;
+                ViewBag.WishListCount = 0;
             }
 
             ShopVM model = new()
             {
-                Products = paginatedDatas
+                Products = paginatedDatas,
+                Categories = categories
             };
 
 
@@ -66,13 +86,25 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
         [HttpGet]
         public async Task<IActionResult> Sort(string filter)
         {
-            List<Product> products = await _productService.GetPaginatedDatas(1, 6, null, filter);
+            List<Product> products = await _productService.GetPaginatedDatas(1, 6, null, filter,null);
             List<ProductListVM> mappedDatas = GetMappedDatas(products);
             int pageCount = await GetPageCountAsync(6);
 
             Paginate<ProductListVM> paginatedDatas = new(mappedDatas, 1, pageCount);
 
             return PartialView("_ProductSortPartial",paginatedDatas);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CategorySort(string category)
+        {
+            List<Product> products = await _productService.GetPaginatedDatas(1, 6, null, null, category);
+            List<ProductListVM> mappedDatas = GetMappedDatas(products);
+            int pageCount = await GetPageCountAsync(6);
+
+            Paginate<ProductListVM> paginatedDatas = new(mappedDatas, 1, pageCount);
+
+            return PartialView("_ProductSortPartial", paginatedDatas);
         }
 
         private async Task<int> GetPageCountAsync(int take)

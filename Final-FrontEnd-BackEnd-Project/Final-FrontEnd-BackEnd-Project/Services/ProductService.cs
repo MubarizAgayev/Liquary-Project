@@ -21,79 +21,157 @@ namespace Final_FrontEnd_BackEnd_Project.Services
         {
             return await _context.Product.CountAsync();
         }
-        public async Task<List<Product>> GetPaginatedDatas(int page, int take, string searchText, string filter)
+        public async Task<List<Product>> GetPaginatedDatas(int page, int take, string searchText, string filter, string category)
         {
             if (searchText == null || searchText == "")
             {
-                if (filter == "All")
+                if (category == null)
                 {
-                    return await _context.Product.Include(m => m.Images).OrderByDescending(m => m.Name).Skip((page * take) - take).Take(take).ToListAsync();
+                    if (filter == "All")
+                    {
+                        return await _context.Product.Include(m => m.Images).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Alphabetically,Z-A")
+                    {
+                        return await _context.Product.Include(m => m.Images).OrderByDescending(m => m.Name).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Alphabetically,A-Z")
+                    {
+                        return await _context.Product.Include(m => m.Images).OrderBy(m => m.Name).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Price,Low to High")
+                    {
+                        return await _context.Product.Include(m => m.Images).OrderBy(m => m.Price).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Price,High to Low")
+                    {
+                        return await _context.Product.Include(m => m.Images).OrderByDescending(m => m.Price).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Date,Old to New")
+                    {
+                        return await _context.Product.Include(m => m.Images).OrderBy(m => m.CreateDate).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Date,New to Old")
+                    {
+                        return await _context.Product.Include(m => m.Images).OrderByDescending(m => m.CreateDate).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Best Selling")
+                    {
+                        return await _context.Product.Include(m => m.Images).OrderByDescending(m => m.Raiting).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    return await _context.Product.Include(m => m.Images).Skip((page * take) - take).Take(take).ToListAsync();
                 }
-                else if (filter == "Alphabetically,Z-A")
+                else
                 {
-                    return await _context.Product.Include(m => m.Images).OrderBy(m => m.Name).Skip((page * take) - take).Take(take).ToListAsync();
+                    if (filter == "All")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Category.CategoryName == category).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Alphabetically,Z-A")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Category.CategoryName == category).OrderByDescending(m => m.Name).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Alphabetically,A-Z")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Category.CategoryName == category).OrderBy(m => m.Name).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Price,Low to High")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Category.CategoryName == category).OrderBy(m => m.Price).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Price,High to Low")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Category.CategoryName == category).OrderByDescending(m => m.Price).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Date,Old to New")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Category.CategoryName == category).OrderBy(m => m.CreateDate).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Date,New to Old")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Category.CategoryName == category).OrderByDescending(m => m.CreateDate).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Best Selling")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Category.CategoryName == category).OrderByDescending(m => m.Raiting).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    return await _context.Product.Include(m => m.Images).Where(m => m.Category.CategoryName == category).Skip((page * take) - take).Take(take).ToListAsync();
                 }
-                else if (filter == "Alphabetically,A-Z")
-                {
-                    return await _context.Product.Include(m => m.Images).OrderBy(m => m.Name).Skip((page * take) - take).Take(take).ToListAsync();
-                }
-                else if (filter == "Price,Low to High")
-                {
-                    return await _context.Product.Include(m => m.Images).OrderBy(m => m.Price).Skip((page * take) - take).Take(take).ToListAsync();
-                }
-                else if (filter == "Price,High to Low")
-                {
-                    return await _context.Product.Include(m => m.Images).OrderByDescending(m => m.Price).Skip((page * take) - take).Take(take).ToListAsync();
-                }
-                else if (filter == "Date,Old to New")
-                {
-                    return await _context.Product.Include(m => m.Images).OrderBy(m => m.CreateDate).Skip((page * take) - take).Take(take).ToListAsync();
-                }
-                else if (filter == "Date,New to Old")
-                {
-                    return await _context.Product.Include(m => m.Images).OrderByDescending(m => m.CreateDate).Skip((page * take) - take).Take(take).ToListAsync();
-                }
-                else if (filter == "Best Selling")
-                {
-                    return await _context.Product.Include(m => m.Images).OrderByDescending(m => m.Raiting).Skip((page * take) - take).Take(take).ToListAsync();
-                }
-                return await _context.Product.Include(m => m.Images).Skip((page * take) - take).Take(take).ToListAsync(); ;
             }
             else
             {
-                if (filter == "All")
+                if (category == null)
                 {
+                    if (filter == "All")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Alphabetically,Z-A")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).OrderByDescending(m => m.Name).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Alphabetically,A-Z")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).OrderBy(m => m.Name).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Price,Low to High")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).OrderBy(m => m.Price).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Price,High to Low")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).OrderByDescending(m => m.Price).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Date,Old to New")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).OrderBy(m => m.CreateDate).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Date,New to Old")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).OrderByDescending(m => m.CreateDate).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Best Selling")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).OrderByDescending(m => m.Raiting).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
                     return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).Skip((page * take) - take).Take(take).ToListAsync();
                 }
-                else if (filter == "Alphabetically,Z-A")
+                else
                 {
-                    return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).Skip((page * take) - take).Take(take).ToListAsync();
+                    if (filter == "All")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower()) && m.Category.CategoryName == category).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Alphabetically,Z-A")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower()) && m.Category.CategoryName == category).OrderByDescending(m => m.Name).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Alphabetically,A-Z")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower()) && m.Category.CategoryName == category).OrderBy(m => m.Name).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Price,Low to High")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower()) && m.Category.CategoryName == category).OrderBy(m => m.Price).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Price,High to Low")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower()) && m.Category.CategoryName == category).OrderByDescending(m => m.Price).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Date,Old to New")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower()) && m.Category.CategoryName == category).OrderBy(m => m.CreateDate).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Date,New to Old")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower()) && m.Category.CategoryName == category).OrderByDescending(m => m.CreateDate).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    else if (filter == "Best Selling")
+                    {
+                        return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower()) && m.Category.CategoryName == category).OrderByDescending(m => m.Raiting).Skip((page * take) - take).Take(take).ToListAsync();
+                    }
+                    return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower()) && m.Category.CategoryName == category).Skip((page * take) - take).Take(take).ToListAsync();
                 }
-                else if (filter == "Alphabetically,A-Z")
-                {
-                    return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).Skip((page * take) - take).Take(take).ToListAsync();
-                }
-                else if (filter == "Price,Low to High")
-                {
-                    return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).Skip((page * take) - take).Take(take).ToListAsync();
-                }
-                else if (filter == "Price,High to Low")
-                {
-                    return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).Skip((page * take) - take).Take(take).ToListAsync();
-                }
-                else if (filter == "Date,Old to New")
-                {
-                    return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).Skip((page * take) - take).Take(take).ToListAsync();
-                }
-                else if (filter == "Date,New to Old")
-                {
-                    return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).Skip((page * take) - take).Take(take).ToListAsync();
-                }
-                else if (filter == "Best Selling")
-                {
-                    return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).Skip((page * take) - take).Take(take).ToListAsync();
-                }
-                return await _context.Product.Include(m => m.Images).Where(m => m.Name.Trim().ToLower().StartsWith(searchText.Trim().ToLower())).Skip((page * take) - take).Take(take).ToListAsync();
             }
 
         }

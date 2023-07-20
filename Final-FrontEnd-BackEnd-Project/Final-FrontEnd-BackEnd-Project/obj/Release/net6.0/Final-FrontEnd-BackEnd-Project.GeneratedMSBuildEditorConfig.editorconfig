@@ -1,0 +1,213 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Final_FrontEnd_BackEnd_Project
+build_property.RootNamespace = Final_FrontEnd_BackEnd_Project
+build_property.ProjectDir = C:\Users\HP\OneDrive\Рабочий стол\Projects\Page\Final-Project\Final\Final-FrontEnd-BackEnd-Project\Final-FrontEnd-BackEnd-Project\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\HP\OneDrive\Рабочий стол\Projects\Page\Final-Project\Final\Final-FrontEnd-BackEnd-Project\Final-FrontEnd-BackEnd-Project
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Blog/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmxvZ1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Blog/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmxvZ1xEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Blog/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmxvZ1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Category/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Category/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Category/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Category/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Offer/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT2ZmZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Offer/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT2ZmZXJcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Offer/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT2ZmZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Offer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT2ZmZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Person/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGVyc29uXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Person/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGVyc29uXERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Person/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGVyc29uXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Person/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGVyc29uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Product/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Product/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Product/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Product/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Slider/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Slider/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Slider/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Slider/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2xpZGVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Tag/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFnXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Tag/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFnXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/Views/Tag/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFnXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Areas/Admin/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/About/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/Account/VerifyEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxWZXJpZnlFbWFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/Cart/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/ProductDetail/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdERldGFpbFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/Shared/Components/Review/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUmV2aWV3XERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/Shared/_ProductSortPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9kdWN0U29ydFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/Shop/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/Wishlist/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2lzaGxpc3RcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/OneDrive/Рабочий стол/Projects/Page/Final-Project/Final/Final-FrontEnd-BackEnd-Project/Final-FrontEnd-BackEnd-Project/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-z8er233qf6

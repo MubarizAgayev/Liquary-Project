@@ -1,4 +1,4 @@
-﻿
+﻿@model List<WishListDetailVM>
 @{
     ViewData["Title"] = "Index";
 }
@@ -20,191 +20,63 @@
     <div class="container">
         <div class="common">
             <div class="down">
-                <div class="col-lg-3 col-md-4">
-                    <div class="cart">
-                        <a href="product-detail.html">
-                            <div class="img">
-                                <img src="~/assets/images/products/product-1 (2).webp" alt="">
-                                <img src="~/assets/images/products/product-1.webp" alt="">
-                            </div>
-                        </a>
-                        <div class="information">
-                            <h6>Aerodynamic Linen Bench</h6>
-                            <div class="stars">
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                            </div>
-                            <h6 class="price">$110.00</h6>
-                            <div class="stock-active">
-                                <div class="dot"></div>
-                                In Stock
-                            </div>
-                            <button type="submit">REMOVE</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <div class="cart">
-                        <a href="product-detail.html">
-                            <div class="img">
-                                <img src="~/assets/images/products/product-2 (2).webp" alt="">
-                                <img src="~/assets/images/products/product-2.webp" alt="">
-                            </div>
-                        </a>
-                        <div class="information">
-                            <h6>Enermous Iron Gloves</h6>
-                            <div class="stars">
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                            </div>
-                            <h6 class="price">$120.00</h6>
-                            <div class="stock-active">
-                                <div class="dot"></div>
-                                In Stock
-                            </div>
-                            <button type="submit">REMOVE</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <div class="cart">
-                        <a href="product-detail.html">
-                            <div class="img">
-                                <img src="~/assets/images/products/product-3.webp" alt="">
-                                <img src="~/assets/images/products/product-3-(2).webp" alt="">
-                            </div>
-                        </a>
-                        <div class="information">
-                            <h6>Ergonomic Copper Shirt</h6>
-                            <div class="stars">
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                            </div>
-                            <h6 class="price">$72.00</h6>
-                            <div class="stock-active">
-                                <div class="dot"></div>
-                                In Stock
-                            </div>
-                            <button type="submit">REMOVE</button>
-                        </div>
-                    </div>
-                </div>
+                @if(@Model != null){
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-3 col-md-4">
+                        <div class="cart">
+                            <a asp-controller="ProductDetail" asp-action="Index" asp-route-id="@item.Id">
+                                <div class="img">
+                                    <img src="~/assets/images/products/@item.MainImage" alt="">
+                                    <img src="~/assets/images/products/@item.SecondImage" alt="">
+                                </div>
+                            </a>
+                            <div class="information">
+                                <h6>Aerodynamic Linen Bench</h6>
+                                <div class="stars">
+                                    @for (int i = 1; i < 5; i++)
+                                    {
+                                        if (i <= item.Raiting)
+                                        {
+                                            <i class="fa-solid fa-star active"></i>
 
-                <div class="col-lg-3 col-md-4">
-                    <div class="cart">
-                        <a href="product-detail.html">
-                            <div class="img">
-                                <img src="~/assets/images/products/product-4.webp" alt="">
-                                <img src="~/assets/images/products/product-4-(2).webp" alt="">
-                            </div>
-                        </a>
-                        <div class="information">
-                            <h6>Fantastic Leather Bench</h6>
-                            <div class="stars">
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <h6 class="price">$82.00</h6>
-                            <div class="stock-active">
-                                <div class="dot"></div>
-                                In Stock
-                            </div>
-                            <button type="submit">REMOVE</button>
-                        </div>
-                    </div>
-                </div>
+                                        }
+                                        else
+                                        {
+                                            <i class="fa-solid fa-star"></i>
 
-                <div class="col-lg-3 col-md-4">
-                    <div class="cart">
-                        <a href="product-detail.html">
-                            <div class="img">
-                                <img src="~/assets/images/products/product-5.webp" alt="">
-                                <img src="~/assets/images/products/product-5-(2).webp" alt="">
+                                        }
+                                    }
+                                </div>
+                                <h6 class="price">$@item.Price</h6>
+                                @if (@item.InStock)
+                                {
+                                    <div class="stock-active">
+                                        <div class="dot"></div>
+                                        In Stock
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="stock-deactive">
+                                        <div class="dot"></div>
+                                        In Stock
+                                    </div>
+                                }
+                                <button class="remove-from-wishlist" data-id="@item.Id">REMOVE</button>
                             </div>
-                        </a>
-                        <div class="information">
-                            <h6>Heavy Duty Concrecate Car</h6>
-                            <div class="stars">
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <h6 class="price">$91.00</h6>
-                            <div class="stock-active">
-                                <div class="dot"></div>
-                                In Stock
-                            </div>
-                            <button type="submit">REMOVE</button>
                         </div>
                     </div>
-                </div>
+                }
+                }     
 
-                <div class="col-lg-3 col-md-4">
-                    <div class="cart">
-                        <a href="product-detail.html">
-                            <div class="img">
-                                <img src="~/assets/images/products/product-6.webp" alt="">
-                                <img src="~/assets/images/products/product-6-(2).webp" alt="">
-                            </div>
-                        </a>
-                        <div class="information">
-                            <h6>Incredible Granite Chair</h6>
-                            <div class="stars">
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <h6 class="price">$80.00</h6>
-                            <div class="stock-active">
-                                <div class="dot"></div>
-                                In Stock
-                            </div>
-                            <button type="submit">REMOVE</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <div class="cart">
-                        <a href="product-detail.html">
-                            <div class="img">
-                                <img src="~/assets/images/products/product-7.webp" alt="">
-                                <img src="~/assets/images/products/product-7-(2).webp" alt="">
-                            </div>
-                        </a>
-                        <div class="information">
-                            <h6>Mediocre Granite Watch</h6>
-                            <div class="stars">
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                                <i class="fa-solid fa-star active"></i>
-                            </div>
-                            <h6 class="price">$110.00</h6>
-                            <div class="stock-active">
-                                <div class="dot"></div>
-                                In Stock
-                            </div>
-                            <button type="submit">REMOVE</button>
-                        </div>
-                    </div>
-                </div>
+               
+
+               
+
+               
+
+               
 
             </div>
         </div>

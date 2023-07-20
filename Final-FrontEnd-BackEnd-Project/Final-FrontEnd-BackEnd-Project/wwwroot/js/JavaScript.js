@@ -36,12 +36,6 @@
             data: data,
             success: function (res) {
                 $(".cart-count").text(res)
-
-                Swal.fire(
-                    'Good job!',
-                    'You clicked the button!',
-                    'success'
-                )
             }
         })
     })
@@ -63,12 +57,6 @@
             data: data,
             success: function (res) {
                 $(".cart-count").text(res)
-
-                Swal.fire(
-                    'Good job!',
-                    'You clicked the button!',
-                    'success'
-                )
             }
         })
     })
@@ -85,7 +73,7 @@
             url: `cart/deleteproductfrombasket?id=${dataId}`,
             type: "Post",
             success: function (res) {
-
+                $(".cart-count").text(res)
             }
         })
 
@@ -112,7 +100,7 @@
             url: `cart/IncreaseProductCount?id=${dataId}`,
             type: "Post",
             success: function (res) {
-
+                $(".cart-count").text(res)
             }
         })
 
@@ -142,7 +130,7 @@
             url: `cart/DecreaseProductCount?id=${dataId}`,
             type: "Post",
             success: function (res) {
-
+                $(".cart-count").text(res)
             }
         })
 
@@ -183,6 +171,69 @@
 
     })
 
-       
+
+    $(document).on("change", "#category-filter", function (ev) {
+
+        ev.preventDefault();
+
+        let category = $(this).val();
+        let data = { category: category }
+
+
+        $.ajax({
+            url: "/Shop/CategorySort",
+            type: "Get",
+            data: data,
+            success: function (res) {
+                $(".partial-sort-datas").html(res)
+            }
+        })
+
+
+    })
+
+
+    $(document).on("click", ".add-to-wishlist", function (ev) {
+
+        ev.preventDefault();
+
+
+        let dataId = $(this).attr("data-id");
+        let data = { id: dataId }
+
+        $.ajax({
+            url: "/ProductDetail/AddWish",
+            type: "Post",
+            data: data,
+            success: function (res) {
+                $(".wishlist-count").text(res)
+                $(this).children().eq(0).css("color", "red")
+            }
+        })
+    })
+
+
+
+    $(document).on("click", ".remove-from-wishlist", function (ev) {
+
+        ev.preventDefault();
+
+        console.log("dfkusd")
+
+
+        let dataId = $(this).attr("data-id");
+        let data = { id: dataId }
+
+        $.ajax({
+            url: "/Wishlist/RemoveWish",
+            type: "Post",
+            data: data,
+            success: function (res) {
+                $(".wishlist-count").text(res)
+            }
+        })
+
+        $(this).parent().parent().parent().remove();
+    })
 
 })

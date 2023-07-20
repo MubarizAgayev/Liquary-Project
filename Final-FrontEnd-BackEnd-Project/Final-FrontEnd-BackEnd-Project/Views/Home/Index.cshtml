@@ -38,7 +38,7 @@
                      style="background-image:url('@Url.Content("~/assets/images/category-image/category-background/")@item.BackgroundColor') ;">
                         <img src="~/assets/images/category-image/@item.CategoryImage" alt="">
                         <div class="text">
-                            <a href="">
+                            <a>
                                 <span>@item.CategoryName</span>
                                 <div class="line"></div>
                             </a>
@@ -125,7 +125,7 @@
                                     <img src="~/assets/images/products/@item.Images.FirstOrDefault(m=>!m.IsMain).Image" alt="">
                                 </div>
                             </a>
-                            <i class="fa-regular fa-heart heart"></i>
+                            @*<i class="fa-regular fa-heart heart"  data-id="@item.Id" style="cursor:pointer;"></i>*@
                             <a href="">
                                 <h6>@item.Name</h6>
                             </a>

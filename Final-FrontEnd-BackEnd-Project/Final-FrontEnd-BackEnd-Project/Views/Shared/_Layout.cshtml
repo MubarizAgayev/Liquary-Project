@@ -70,7 +70,9 @@
                             <a asp-controller="Wishlist" asp-action="Index">
                                 <div class="wishlist">
                                     <i class="fa-regular fa-heart heart"></i>
-                                    <sub>0</sub>
+                                    <sub class="wishlist-count">
+                                        @ViewBag.WishListCount
+                                    </sub>
                                 </div>
                             </a>
                             <a asp-controller="Cart" asp-action="Index">
