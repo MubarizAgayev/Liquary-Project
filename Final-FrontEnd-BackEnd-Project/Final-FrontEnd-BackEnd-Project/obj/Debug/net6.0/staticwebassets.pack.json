@@ -15825,6 +15825,18 @@
       "PackagePath": "staticwebassets\\assets\\css\\cart.scss"
     },
     {
+      "Id": "C:\\Users\\HP\\OneDrive\\Рабочий стол\\Projects\\Page\\Final-Project\\Final\\Final-FrontEnd-BackEnd-Project\\Final-FrontEnd-BackEnd-Project\\wwwroot\\assets\\css\\contact.css",
+      "PackagePath": "staticwebassets\\assets\\css\\contact.css"
+    },
+    {
+      "Id": "C:\\Users\\HP\\OneDrive\\Рабочий стол\\Projects\\Page\\Final-Project\\Final\\Final-FrontEnd-BackEnd-Project\\Final-FrontEnd-BackEnd-Project\\wwwroot\\assets\\css\\contact.css.map",
+      "PackagePath": "staticwebassets\\assets\\css\\contact.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HP\\OneDrive\\Рабочий стол\\Projects\\Page\\Final-Project\\Final\\Final-FrontEnd-BackEnd-Project\\Final-FrontEnd-BackEnd-Project\\wwwroot\\assets\\css\\contact.scss",
+      "PackagePath": "staticwebassets\\assets\\css\\contact.scss"
+    },
+    {
       "Id": "C:\\Users\\HP\\OneDrive\\Рабочий стол\\Projects\\Page\\Final-Project\\Final\\Final-FrontEnd-BackEnd-Project\\Final-FrontEnd-BackEnd-Project\\wwwroot\\assets\\css\\index.css",
       "PackagePath": "staticwebassets\\assets\\css\\index.css"
     },
@@ -16075,6 +16087,10 @@
     {
       "Id": "C:\\Users\\HP\\OneDrive\\Рабочий стол\\Projects\\Page\\Final-Project\\Final\\Final-FrontEnd-BackEnd-Project\\Final-FrontEnd-BackEnd-Project\\wwwroot\\assets\\js\\cart.js",
       "PackagePath": "staticwebassets\\assets\\js\\cart.js"
+    },
+    {
+      "Id": "C:\\Users\\HP\\OneDrive\\Рабочий стол\\Projects\\Page\\Final-Project\\Final\\Final-FrontEnd-BackEnd-Project\\Final-FrontEnd-BackEnd-Project\\wwwroot\\assets\\js\\contact.js",
+      "PackagePath": "staticwebassets\\assets\\js\\contact.js"
     },
     {
       "Id": "C:\\Users\\HP\\OneDrive\\Рабочий стол\\Projects\\Page\\Final-Project\\Final\\Final-FrontEnd-BackEnd-Project\\Final-FrontEnd-BackEnd-Project\\wwwroot\\assets\\js\\index.js",

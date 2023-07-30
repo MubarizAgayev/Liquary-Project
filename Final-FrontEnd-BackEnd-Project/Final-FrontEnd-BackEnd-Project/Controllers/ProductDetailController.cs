@@ -32,6 +32,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
             List<Review> review = await _context.Reviews.Where(m => m.ProductId == id).ToListAsync();
 
             int basketCount = 0;
+            bool InWish = false;
             if (User.Identity.IsAuthenticated)
             {
                 AppUser result = await _context.Users.FirstOrDefaultAsync(m => m.UserName == User.Identity.Name);
@@ -61,19 +62,30 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 {
                     ViewBag.BasketCount = 0;
                 }
-            }
+
+                Wishlist wish = await _context.Wishlist.Where(m => m.UserId == result.Id && m.ProductId == id).FirstOrDefaultAsync();
+
+                if (wish != null)
+                {
+                    InWish = true;
+                }
+                else
+                {
+                    InWish = false;
+                }            }
             else
             {
                 ViewBag.WishListCount = 0;
                 ViewBag.BasketCount = 0;
             }
-     
+
 
 
             ProductDetailVM model = new()
             {
                 Product = product,
                 Reviews = review,
+                InWish = InWish
             };
 
 
@@ -83,10 +95,10 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddBasket(int? id, int count)
         {
-            if (User.Identity.IsAuthenticated)
-            {
                 AppUser result = await _context.Users.FirstOrDefaultAsync(m => m.UserName == User.Identity.Name);
 
                 if (id is null) return BadRequest();
@@ -105,7 +117,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 if (existBasket != null)
                 {
                     existBasket.Count += count;
-                    basketCount = baskets.Sum(m => m.Count) + count;
+                    basketCount = baskets.Sum(m => m.Count);
                 }
                 else
                 {
@@ -135,11 +147,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 await _context.SaveChangesAsync();
 
                 return Ok(basketCount);
-            }
-            else
-            {
-                return RedirectToAction("Login", "Account");
-            }
+
         }
 
 
@@ -188,11 +196,9 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
             }
         }
 
-
+        [Authorize]
         public async Task<IActionResult> AddWish(int? id)
         {
-            if (User.Identity.IsAuthenticated)
-            {
                 AppUser result = await _context.Users.FirstOrDefaultAsync(m => m.UserName == User.Identity.Name);
 
                 if (id is null) return BadRequest();
@@ -239,11 +245,7 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 await _context.SaveChangesAsync();
 
                 return Ok(wishListCount);
-            }
-            else
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            
         }
 
 

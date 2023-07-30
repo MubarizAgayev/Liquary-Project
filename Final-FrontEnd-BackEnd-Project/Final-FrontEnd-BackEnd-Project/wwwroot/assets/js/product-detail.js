@@ -150,6 +150,9 @@ $(document).ready(function () {
     });
 
 
+    $(".add-wish").click(function () {
+        $(this).classList.toggle("heartt")
+    })
     
 
 })

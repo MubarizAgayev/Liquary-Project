@@ -7,6 +7,6 @@ namespace Final_FrontEnd_BackEnd_Project.Services.Interfaces
         Task<Product> GetById(int id);
         Task<IEnumerable<Product>> GetAll();
         Task<List<Product>> GetPaginatedDatas(int page, int take,string searchText, string filter,string category);
-        Task<int> GetCountAsync();
+        Task<int> GetCountAsync(string searchText,string category,string filter);
     }
 }

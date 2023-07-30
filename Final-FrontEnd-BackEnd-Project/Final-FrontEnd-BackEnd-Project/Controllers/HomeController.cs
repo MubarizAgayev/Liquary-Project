@@ -2,6 +2,7 @@
 using Final_FrontEnd_BackEnd_Project.Models;
 using Final_FrontEnd_BackEnd_Project.Services.Interfaces;
 using Final_FrontEnd_BackEnd_Project.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -89,10 +90,9 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
             return View(model);
         }
 
+        [Authorize]
         public async Task<IActionResult> AddBasket(int? id)
         {
-            if (User.Identity.IsAuthenticated)
-            {
                 AppUser result = await _context.Users.FirstOrDefaultAsync(m => m.UserName == User.Identity.Name);
 
                 if (id is null) return BadRequest();
@@ -138,11 +138,6 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
                 await _context.SaveChangesAsync();
 
                 return Ok(basketCount);
-            }
-            else
-            {
-                return RedirectToAction("Login", "Account");
-            }
         }
 
 

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Review>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Raiting</th>
+                <th scope="col">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+                <tr>
+                    <th>
+                        @category.Username
+                    </th>
+                    <th>
+                        @category.Email
+                    </th>
+                    <th>
+                        @category.Raiting
+                    </th>
+                    <td>
+                        <a class="btn btn-outline-info" asp-action="Detail" asp-route-id="@category.Id">Info</a>
+                        <a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@category.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

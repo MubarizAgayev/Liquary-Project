@@ -62,9 +62,9 @@ namespace Final_FrontEnd_BackEnd_Project.Areas.Admin.Controllers
                     return View(model);
                 }
 
-                if (model.Photos.Count() <= 5)
+                if (model.Photos.Count() < 2)
                 {
-                    ModelState.AddModelError("Name", "Image count must be min 5");
+                    ModelState.AddModelError("Name", "Image count must be min 2");
                     return View(model);
                 }
 

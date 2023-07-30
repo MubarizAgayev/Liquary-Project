@@ -27,12 +27,11 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(string searchText = null,string filter = null,string category = null,int page = 1, int take = 6)
         {
-            
             List<Category> categories = await _context.Category.ToListAsync();
 
             List<Product> products = await _productService.GetPaginatedDatas(page, take, searchText, filter,category);
             List<ProductListVM> mappedDatas = GetMappedDatas(products);
-            int pageCount = await GetPageCountAsync(take);
+            int pageCount = await GetPageCountAsync(take,searchText,category,filter);
 
             Paginate<ProductListVM> paginatedDatas = new(mappedDatas, page, pageCount);
 
@@ -84,32 +83,35 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Sort(string filter)
+        public async Task<IActionResult> Sort(string filter, int page = 1, int take = 6)
         {
-            List<Product> products = await _productService.GetPaginatedDatas(1, 6, null, filter,null);
+            ViewBag.Text = filter;
+            List<Product> products = await _productService.GetPaginatedDatas(page, take, null, filter,null);
             List<ProductListVM> mappedDatas = GetMappedDatas(products);
-            int pageCount = await GetPageCountAsync(6);
+            int pageCount = await GetPageCountAsync(take,null,null,filter);
 
-            Paginate<ProductListVM> paginatedDatas = new(mappedDatas, 1, pageCount);
+            Paginate<ProductListVM> paginatedDatas = new(mappedDatas, page, pageCount);
 
             return PartialView("_ProductSortPartial",paginatedDatas);
         }
 
         [HttpGet]
-        public async Task<IActionResult> CategorySort(string category)
+        public async Task<IActionResult> CategorySort(string category, int page = 1, int take = 6)
         {
-            List<Product> products = await _productService.GetPaginatedDatas(1, 6, null, null, category);
+            List<Product> products = await _productService.GetPaginatedDatas(page, take, null, null, category);
             List<ProductListVM> mappedDatas = GetMappedDatas(products);
-            int pageCount = await GetPageCountAsync(6);
+            int pageCount = await GetPageCountAsync(take,null,category,null);
 
-            Paginate<ProductListVM> paginatedDatas = new(mappedDatas, 1, pageCount);
+            Paginate<ProductListVM> paginatedDatas = new(mappedDatas, page, pageCount);
+
+            ViewBag.Text = category;
 
             return PartialView("_ProductSortPartial", paginatedDatas);
         }
 
-        private async Task<int> GetPageCountAsync(int take)
+        private async Task<int> GetPageCountAsync(int take,string searchText,string category,string filter)
         {
-            var productCount = await _productService.GetCountAsync();
+            var productCount = await _productService.GetCountAsync(searchText,category,filter);
             return (int)Math.Ceiling((decimal)productCount / take);
         }
 

@@ -31,7 +31,7 @@
                             <a asp-controller="About" asp-action="Index">
                             <li>ABOUT US</li>
                             </a>
-                            <a href="">
+                            <a asp-controller="Contact" asp-action="Index">
                             <li>CONTACT</li>
                             </a>
                         </ul>
@@ -102,24 +102,12 @@
                     <div class="menu d-none">
                         <img src="./assets/images/tab-image/bg_vertical-1.webp" alt="">
                         <div class="category-list">
-                            <a href="">
                                 <div class="item">Whiskey</div>
-                            </a>
-                            <a href="">
                                 <div class="item">Spirits</div>
-                            </a>
-                            <a href="">
                                 <div class="item">Deals</div>
-                            </a>
-                            <a href="">
                                 <div class="item">Cognac</div>
-                            </a>
-                            <a href="">
                                 <div class="item">Cocktail</div>
-                            </a>
-                            <a href="">
                                 <div class="item">Beer</div>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -144,7 +132,7 @@
                             <div class="line"></div>
                         </div>
                         <div class="item">
-                            <a href="">
+                            <a asp-controller="Contact" asp-action="Index">
                                 <span>CONTACT</span>
                             </a>
                             <div class="line"></div>
@@ -317,6 +305,7 @@
     <script src="~/assets/js/cart.js"></script>
     <script src="~/assets/js/wishlist.js"></script>
     <script src="~/js/JavaScript.js"></script>
+    <script src="~/assets/js/contact.js"></script>
     <script src="https://kit.fontawesome.com/8f43d61c20.js" crossorigin="anonymous"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

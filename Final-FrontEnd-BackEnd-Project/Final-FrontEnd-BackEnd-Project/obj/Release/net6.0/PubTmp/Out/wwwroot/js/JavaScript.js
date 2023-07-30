@@ -44,15 +44,18 @@
 
         ev.preventDefault();
 
-
+      
 
 
         let dataId = $(this).attr("data-id");
+
+        console.log(dataId)
+
         let count = $(this).prev().children().eq(1).text()
         let data = { id: dataId, count: count }
 
         $.ajax({
-            url: `productdetail/addbasket`,
+            url: `/productdetail/addbasket`,
             type: "Post",
             data: data,
             success: function (res) {
@@ -73,7 +76,7 @@
             url: `cart/deleteproductfrombasket?id=${dataId}`,
             type: "Post",
             success: function (res) {
-
+                $(".cart-count").text(res)
             }
         })
 
@@ -197,8 +200,6 @@
 
         ev.preventDefault();
 
-        console.log("dfkusd")
-
 
         let dataId = $(this).attr("data-id");
         let data = { id: dataId }
@@ -209,9 +210,33 @@
             data: data,
             success: function (res) {
                 $(".wishlist-count").text(res)
-                $(this).children().eq(0).css("color", "red")
+                $(".heartt").css("color", "red")
             }
         })
+    })
+
+
+
+    $(document).on("click", ".remove-from-wishlist", function (ev) {
+
+        ev.preventDefault();
+
+        console.log("dfkusd")
+
+
+        let dataId = $(this).attr("data-id");
+        let data = { id: dataId }
+
+        $.ajax({
+            url: "/Wishlist/RemoveWish",
+            type: "Post",
+            data: data,
+            success: function (res) {
+                $(".wishlist-count").text(res)
+            }
+        })
+
+        $(this).parent().parent().parent().remove();
     })
 
 })

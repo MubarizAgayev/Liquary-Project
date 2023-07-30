@@ -1,0 +1,39 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container">
+
+    <div class="form-group">
+        <label>UserName</label>
+        <input class="form-control" disabled id="customFile" asp-for="Name" />
+        <span class="text-danger" asp-validation-for="Name"></span><br />
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" disabled id="customFile" asp-for="Email" />
+        <span class="text-danger" asp-validation-for="Email"></span><br />
+    </div>
+
+    <div class="form-group">
+        <label>Number</label>
+        <input class="form-control" disabled id="customFile" asp-for="Number" />
+        <span class="text-danger" asp-validation-for="Number"></span><br />
+    </div>
+
+     <div class="form-group">
+    <label>Context</label>
+        <textarea class="form-control" disabled id="description-text" rows="5" asp-for="Context"></textarea>
+        <span class="text-danger" asp-validation-for="Context"></span><br />
+    </div>
+    
+
+    <div class="form-group">
+        <div class="buttons my-3">
+            <a class="btn btn-light" asp-action="Index">Cancel</a>
+        </div>
+    </div>
+</div>
+

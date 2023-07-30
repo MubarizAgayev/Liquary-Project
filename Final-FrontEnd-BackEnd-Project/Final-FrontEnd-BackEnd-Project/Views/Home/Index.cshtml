@@ -38,10 +38,8 @@
                      style="background-image:url('@Url.Content("~/assets/images/category-image/category-background/")@item.BackgroundColor') ;">
                         <img src="~/assets/images/category-image/@item.CategoryImage" alt="">
                         <div class="text">
-                            <a>
                                 <span>@item.CategoryName</span>
                                 <div class="line"></div>
-                            </a>
                             <p>@Model.Products.FindAll(m=>m.CategoryId == item.Id).Count products</p>
                         </div>
                     </div>

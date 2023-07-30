@@ -43,7 +43,6 @@
                         </select>
                 
                     </div>
-                    <span class="product-count">@Model.Products.Datas.Count()</span>
                 </div>
             </div>
 
@@ -53,20 +52,6 @@
                 <partial name="_ProductSortPartial" model="Model.Products" />
             </div>
 
-            <nav aria-label="Page navigation example" style="margin-top:50px;">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item @(Model.Products.HasPrevius? "":"disabled")">
-                        <a class="page-link" asp-action="Index" asp-route-page="@(Model.Products.CurrentPage-1)" tabindex="-1">Previous</a>
-                    </li>
-                    @for (int i = 1; i <= Model.Products.TotalPage; i++)
-                    {
-                        <li class="page-item @(Model.Products.CurrentPage == i ? "disabled":"")"><a class="page-link" asp-action="Index" asp-route-page="@i">@i</a></li>
-                    }
-                    <li class="page-item @(Model.Products.HasNext? "":"disabled")">
-                        <a class="page-link" asp-action="Index" asp-route-page="@(Model.Products.CurrentPage+1)">Next</a>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </div>
 </main>

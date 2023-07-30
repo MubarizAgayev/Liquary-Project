@@ -27,19 +27,36 @@ namespace Final_FrontEnd_BackEnd_Project.Controllers
 
 
             int basketCount = 0;
+            int wishListCount = 0;
             if (User.Identity.IsAuthenticated)
             {
                 AppUser result = await _context.Users.FirstOrDefaultAsync(m => m.UserName == User.Identity.Name);
                 List<Basket> baskets = await _context.Baskets.Where(m => m.UserId == result.Id && m.SoftDelete == false).ToListAsync();
                 basketCount = baskets.Sum(m => m.Count);
-            }
-            if (basketCount > 0)
-            {
-                ViewBag.BasketCount = basketCount;
+                List<Wishlist> wishlists = await _context.Wishlist.Where(m => m.UserId == result.Id).ToListAsync();
+
+                wishListCount = wishlists.Count;
+                if (wishListCount > 0)
+                {
+                    ViewBag.WishListCount = wishListCount;
+                }
+                else
+                {
+                    ViewBag.WishListCount = 0;
+                }
+                if (basketCount > 0)
+                {
+                    ViewBag.BasketCount = basketCount;
+                }
+                else
+                {
+                    ViewBag.BasketCount = 0;
+                }
             }
             else
             {
                 ViewBag.BasketCount = 0;
+                ViewBag.WishListCount = 0;
             }
 
             

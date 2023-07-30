@@ -48,9 +48,16 @@
                     </div>
                     <button class="add-to-cart-button2" data-id="@Model.Product.Id">Add to cart</button>
                     <div class="add-wishlist">
-                        <button class="add-to-wishlist" data-id="@Model.Product.Id">
-                            <i class="fa-regular fa-heart"></i>
-                        </button>
+                        <button type="submit" class="add-to-wishlist" style="border:1px solid white;background-color:white;" data-id="@Model.Product.Id">
+                            @if (Model.InWish == true)
+                            {
+                                <i class="fa-regular fa-heart heartt add-wish" style="color:red;"></i>
+                            }
+                            else
+                            {
+                                <i class="fa-regular fa-heart heartt add-wish"></i>
+                            }
+                        </button>  
                         <span>Whishlist</span>
                     </div>
                 </div>
